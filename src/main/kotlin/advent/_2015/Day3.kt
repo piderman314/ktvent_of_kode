@@ -2,7 +2,6 @@ package advent._2015
 
 import advent.Day
 import advent.util.Location
-import advent.util.move
 import advent.util.toDirection
 import java.time.LocalDate
 
