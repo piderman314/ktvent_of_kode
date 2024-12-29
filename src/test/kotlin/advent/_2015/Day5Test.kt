@@ -10,8 +10,7 @@ class Day5Test : DayTest<Day5>(::Day5) {
             "aaa" to "1",
             "jchzalrnumimnmhp" to "0",
             "haegwjzuvuyypxyu" to "0",
-            "dvszwmarrgswjxmb" to "0"
-        )
+            "dvszwmarrgswjxmb" to "0")
 
     override fun part2TestInput(): TestInput =
         mapOf(
@@ -21,7 +20,5 @@ class Day5Test : DayTest<Day5>(::Day5) {
             "ieodomkazucvgmuy" to "0",
             "xyxy" to "1",
             "aaaxyx" to "0",
-            "ueihvxviirnooomi" to "0"
-        )
-
+            "ueihvxviirnooomi" to "0")
 }

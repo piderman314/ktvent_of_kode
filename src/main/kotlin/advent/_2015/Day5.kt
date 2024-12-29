@@ -12,7 +12,6 @@ class Day5 : Day(LocalDate.of(2015, 12, 5)) {
     override fun part2(input: String): String {
         return input.lines().count { it.isNice2() }.toString()
     }
-
 }
 
 private fun String.isNice1(): Boolean {
@@ -29,19 +28,15 @@ private fun String.isNice1(): Boolean {
 }
 
 private fun String.isNice2(): Boolean {
-    val m = (0..(this.length - 2))
-        .map { this.substring(it, it + 2) to it }
-        .groupBy { it.first }
+    val m = (0..(this.length - 2)).map { this.substring(it, it + 2) to it }.groupBy { it.first }
     if (m.values.map { pairList -> pairList.map { it.second } }.none { it.isNice() }) {
         return false
     }
 
-    val folded = this.fold(Pair("  ", false)) { pair, char ->
-        Pair(
-            (pair.first + char).substring(1),
-            pair.second || char == pair.first[0]
-        )
-    }
+    val folded =
+        this.fold(Pair("  ", false)) { pair, char ->
+            Pair((pair.first + char).substring(1), pair.second || char == pair.first[0])
+        }
     return folded.second
 }
 
@@ -51,6 +46,8 @@ private fun List<Int>.isNice(): Boolean {
     }
 
     val sorted = sorted()
-    return sorted.drop(1)
-        .fold(sorted[0] to false) { pair, value -> value to (pair.second || pair.first + 1 != value) }.second
+    return sorted
+        .drop(1)
+        .fold(sorted[0] to false) { pair, value -> value to (pair.second || pair.first + 1 != value) }
+        .second
 }

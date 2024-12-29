@@ -14,13 +14,7 @@ class Day1Test : DayTest<Day1>(::Day1) {
             "())" to "-1",
             "))(" to "-1",
             ")))" to "-3",
-            ")())())" to "-3"
-        )
+            ")())())" to "-3")
 
-    override fun part2TestInput(): TestInput =
-        mapOf(
-            ")" to "1",
-            "()())" to "5"
-        )
-
+    override fun part2TestInput(): TestInput = mapOf(")" to "1", "()())" to "5")
 }

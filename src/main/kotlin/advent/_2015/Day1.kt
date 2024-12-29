@@ -9,14 +9,17 @@ class Day1 : Day(LocalDate.of(2015, 12, 1)) {
     }
 
     override fun part2(input: String): String {
-        val fold = input.toCharArray()
-            .runningFoldIndexed(-1 to 0L) { index, acc, ch -> (index + 1) to (acc.second + braceToAddend(ch)) }
+        val fold =
+            input.toCharArray().runningFoldIndexed(-1 to 0L) { index, acc, ch ->
+                (index + 1) to (acc.second + braceToAddend(ch))
+            }
         return fold.find { it.second == -1L }!!.first.toString()
     }
 
-    private fun braceToAddend(c: Char) = when (c) {
-        '(' -> 1L
-        ')' -> -1L
-        else -> 0L
-    }
+    private fun braceToAddend(c: Char) =
+        when (c) {
+            '(' -> 1L
+            ')' -> -1L
+            else -> 0L
+        }
 }

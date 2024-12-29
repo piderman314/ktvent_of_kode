@@ -1,11 +1,11 @@
 package advent
 
-import org.junit.jupiter.api.DynamicTest
-import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.TestFactory
 import java.io.File
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
+import org.junit.jupiter.api.DynamicTest
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.TestFactory
 
 typealias TestInput = Map<String, String>
 
@@ -13,11 +13,9 @@ abstract class DayTest<D : Day>(constructor: () -> D) {
 
     private val day: D = constructor.invoke()
 
-    @TestFactory
-    fun part1Tests() = partTests(::part1TestInput, Day::part1, 1)
+    @TestFactory fun part1Tests() = partTests(::part1TestInput, Day::part1, 1)
 
-    @TestFactory
-    fun part2Tests() = partTests(::part2TestInput, Day::part2, 2)
+    @TestFactory fun part2Tests() = partTests(::part2TestInput, Day::part2, 2)
 
     @Test
     fun part1ForReal() {
@@ -31,12 +29,7 @@ abstract class DayTest<D : Day>(constructor: () -> D) {
 
     private fun partTests(input: () -> TestInput, part: D.(String) -> String, partNumber: Int) =
         input().map { (input, expected) ->
-            DynamicTest.dynamicTest("Test for Part $partNumber") {
-                assertEquals(
-                    expected,
-                    day.part(input)
-                )
-            }
+            DynamicTest.dynamicTest("Test for Part $partNumber") { assertEquals(expected, day.part(input)) }
         }
 
     private fun partForReal(day: D, part: D.(String) -> String) {
@@ -49,6 +42,6 @@ abstract class DayTest<D : Day>(constructor: () -> D) {
     }
 
     abstract fun part1TestInput(): TestInput
-    abstract fun part2TestInput(): TestInput
 
+    abstract fun part2TestInput(): TestInput
 }
