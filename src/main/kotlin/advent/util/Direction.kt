@@ -10,7 +10,6 @@ enum class Direction(val distance: Distance) {
     SOUTH_WEST(Distance(-1, 1)),
     WEST(Distance(-1, 0)),
     NORTH_WEST(Distance(-1, -1))
-
 }
 
 fun Char.toDirection(): Direction =

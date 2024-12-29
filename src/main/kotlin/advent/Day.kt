@@ -8,6 +8,6 @@ abstract class Day(val date: LocalDate) {
         get() = "/real_input/${date.year}/day${date.dayOfMonth}.txt"
 
     abstract fun part1(input: String): String
-    abstract fun part2(input: String): String
 
+    abstract fun part2(input: String): String
 }
