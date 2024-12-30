@@ -1,12 +1,9 @@
 package advent.util.parser
 
-class StringParser(internal var input: String) {
-    fun mayBe(value: String): Boolean = input.startsWith(value)
+class StringTokenizer(internal var input: String) {
+    fun mayBe(value: String) = input == value || mayBe("${value}\\s+".toRegex())
 
-    fun mayBe(regex: Regex): Boolean {
-        val matchResult = regex.find(input)
-        return matchResult != null && matchResult.range.first == 0
-    }
+    fun mayBe(regex: Regex) = enhanceRegex(regex).find(input) != null
 
     fun mayRead(value: String): String? {
         if (!mayBe(value)) {
@@ -19,10 +16,7 @@ class StringParser(internal var input: String) {
     }
 
     fun mayRead(regex: Regex): String? {
-        val matchResult = regex.find(input) ?: return null
-        if (matchResult.range.first != 0) {
-            return null
-        }
+        val matchResult = enhanceRegex(regex).find(input) ?: return null
 
         val result = matchResult.value
 
@@ -31,7 +25,13 @@ class StringParser(internal var input: String) {
         return result
     }
 
+    fun isEmpty() = input.isEmpty()
+
+    fun nextToken() = mayRead("[^\\s]+".toRegex())
+
     private fun skipWhitespace() {
         mayRead("\\s+".toRegex())
     }
+
+    private fun enhanceRegex(regex: Regex) = "^${regex.pattern}".toRegex()
 }
