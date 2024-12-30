@@ -1,8 +1,8 @@
 package advent.util.parser
 
-import kotlin.test.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import kotlin.test.assertEquals
 
 class LexerTest {
 
@@ -42,7 +42,7 @@ class LexerTest {
     }
 }
 
-private enum class TestTokenDefinitions(
+enum class TestTokenDefinitions(
     override val definitionType: TokenDefinitionType,
     override val string: String?,
     override val regex: Regex?

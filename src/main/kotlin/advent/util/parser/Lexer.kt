@@ -34,3 +34,5 @@ class Lexer<T : Enum<T>>(tokenDefinitions: Collection<TokenDefinition<T>>) {
         return null
     }
 }
+
+class LexerException(message: String) : Exception(message)
