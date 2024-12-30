@@ -1,7 +1,7 @@
 package advent.util
 
 import kotlin.test.assertEquals
-import org.junit.jupiter.api.Assertions.assertFalse
+import kotlin.test.assertFalse
 import org.junit.jupiter.api.DynamicTest
 import org.junit.jupiter.api.TestFactory
 
