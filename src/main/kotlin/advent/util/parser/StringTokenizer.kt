@@ -1,6 +1,10 @@
 package advent.util.parser
 
 class StringTokenizer(internal var input: String) {
+    init {
+        skipWhitespace()
+    }
+
     fun mayBe(value: String) = input == value || mayBe("${value}\\s+".toRegex())
 
     fun mayBe(regex: Regex) = enhanceRegex(regex).find(input) != null
