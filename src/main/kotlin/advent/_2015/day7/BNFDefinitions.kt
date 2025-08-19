@@ -1,6 +1,7 @@
 package advent._2015.day7
 
 import advent.util.parser.BNFLeafOption
+import advent.util.parser.BNFOption
 import advent.util.parser.BNFTreeOption
 
 enum class BNFDefinitions {
@@ -14,7 +15,8 @@ enum class BNFDefinitions {
     IDENTIFIER
 }
 
-val bnfDefinitions =
+val bnfDefinitions:
+    Map<BNFDefinitions, List<BNFOption<BNFDefinitions, TokenDefinitions, MutableMap<String, Long>, Long>>> =
     mapOf(
         BNFDefinitions.ASSIGNMENT to
             listOf(

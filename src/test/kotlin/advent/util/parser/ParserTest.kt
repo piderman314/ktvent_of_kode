@@ -6,7 +6,10 @@ import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
 
 class ParserTest {
-    private val bnfDefinitions =
+    private val bnfDefinitions:
+        Map<
+            TestBNFDefinitions,
+            List<BNFOption<TestBNFDefinitions, TestTokenDefinitions, MutableMap<String, Long>, Long>>> =
         mapOf(
             TestBNFDefinitions.IDENTIFIER to listOf(BNFLeafOption(TestTokenDefinitions.IDENTIFIER, ::Identifier)),
             TestBNFDefinitions.NUMBER to listOf(BNFLeafOption(TestTokenDefinitions.NUMBER, ::Number)),
